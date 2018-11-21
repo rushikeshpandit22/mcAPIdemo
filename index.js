@@ -20,10 +20,7 @@ client.dataExtension({props}).post((err, response) => {
 });*/
 
 
-const props = ['F2B2A6F4-2032-458B-B046-877FAE93FDD1'];
-
-client.dataExtensionColumn({props}).get((err, response) => {
-    console.log(JSON.stringify(response));
-    console.log("err"+JSON.stringify(err));
-    
-});
+const props = ['Name']; 
+client.dataExtensionRow({props, Name: 'PandaAPIDE3'}).get((err,response) => { 
+console.log(JSON.stringify(response) + '\n' + JSON.stringify(err)) 
+})
