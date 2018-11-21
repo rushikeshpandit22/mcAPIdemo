@@ -22,6 +22,6 @@ client.dataExtension({props}).post((err, response) => {
 
 const props = ['Name']; 
 client.dataExtensionRow({props, Name: 'PandaAPIDE3'}).get((err,response) => { 
-console.log(JSON.stringify(response.body.Properties) + '\n' + JSON.stringify(err)) 
+console.log(JSON.stringify(response.body) + '\n' + JSON.stringify(err)) 
 
 })
