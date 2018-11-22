@@ -8,6 +8,7 @@ var pug = require('pug');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', __dirname + '/views');
 app.set('view engine','pug');
+var port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
@@ -26,4 +27,4 @@ console.log(req.body);
 
 });
 
-app.listen(3000, () => console.log('Gator app listening on port 3000!'));
+app.listen(port, () => console.log('Gator app listening on port '+port+''));
