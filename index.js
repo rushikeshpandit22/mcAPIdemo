@@ -1,26 +1,29 @@
 const ET_Client = require('fuelsdk-node');
-const client = new ET_Client('tzv6fcoi1oachkygw2hnvva9', 'l0sUcKPSJMZEHYxJE68eQG0v','s7');
-console.log(client);
-/*const props = {
-    Name: 'PandaTestDE5',
-    Description: 'Campaign description',
-    Fields : {
-        Field : {
-            Name: 'Name',
-            FieldType: 'Text',
-            IsPrimaryKey: true,
-            MaxLength: 100,
-            IsRequired: true
-        }
+const client = new ET_Client('tzv6fcoi1oachkygw2hnvva9', 'l0sUcKPSJMZEHYxJE68eQG0v', 's7');
+var bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+app.use(bodyParser.json());
+var pug = require('pug');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('views', __dirname + '/views');
+app.set('view engine','pug');
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+const props = ['Name'];
+app.post('/getTableData', (req, res) => {
+console.log(req.body);
+    if (req.body.username == 'sfmc' && req.body.pwd == '1234') {
+        client.dataExtensionRow({ props, Name: 'PandaAPIDE3' }).get((err, response) => {
+        res.render('DisplayTableData', {data : response.body.Results});
+        })
     }
-};
-client.dataExtension({props}).post((err, response) => {
-    console.log("response===="+JSON.stringify( response));
-    console.log("err===="+JSON.stringify( err));
-});*/
+    else {
+        return res.redirect('/');
+    }
 
+});
 
-const props = ['Name']; 
-client.dataExtensionRow({props, Name: 'PandaAPIDE3'}).get((err,response) => { 
-console.log(JSON.stringify(response) + '\n' + JSON.stringify(err)) 
-})
+app.listen(3000, () => console.log('Gator app listening on port 3000!'));

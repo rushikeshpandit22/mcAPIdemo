@@ -1,14 +1,18 @@
 {
-  "name": "mcs",
+  "name": "nodedemo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "panda",
+  "author": "advait",
   "license": "ISC",
   "dependencies": {
-    "fuelsdk-node": "^2.1.0"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "fuel-soap": "^2.1.0",
+    "fuelsdk-node": "^2.1.0",
+    "pug": "^2.0.3"
   }
 }
