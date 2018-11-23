@@ -12,8 +12,8 @@ var port = process.env.PORT || 3000;
 
 app.post('/', (req, res) => {
     
-    console.log("request:- **********************************************************************\n"+req+"\n\n");
-    console.log("responce:- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"+res+"\n\n");
+    console.log("request:- **********************************************************************\n"+req.toString()+"\n\n");
+    console.log("responce:- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"+res.toString()+"\n\n");
     res.sendFile(__dirname + '/index.html');
 });
 const props = ['Name'];
