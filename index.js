@@ -10,7 +10,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine','pug');
 var port = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 const props = ['Name'];
