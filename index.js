@@ -11,9 +11,10 @@ app.set('view engine','pug');
 var port = process.env.PORT || 3000;
 
 app.post('/', (req, res) => {
+    
+    console.log("request:- **********************************************************************\n"+req+"\n\n");
+    console.log("responce:- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"+res+"\n\n");
     res.sendFile(__dirname + '/index.html');
-    console.log("request:- **********************************************************************\n"+ JSON.stringify(req)+"\n\n");
-    console.log("responce:- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"+ JSON.stringify(res)+"\n\n");
 });
 const props = ['Name'];
 app.post('/getTableData', (req, res) => {
