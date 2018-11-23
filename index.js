@@ -12,8 +12,8 @@ var port = process.env.PORT || 3000;
 
 app.post('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
-    console.log("request:- **********************************************************************\n"+ JSON.strigify(req)+"\n\n");
-    console.log("responce:- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"+ JSON.strigify(res)+"\n\n");
+    console.log("request:- **********************************************************************\n"+ json.stringify(req)+"\n\n");
+    console.log("responce:- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"+ json.stringify(res)+"\n\n");
 });
 const props = ['Name'];
 app.post('/getTableData', (req, res) => {
