@@ -31,12 +31,10 @@ app.post('/', (req, res) => {
             "refreshToken":refreshToken,
             "accessType": "offline"        
         }).then(response =>{
-            console.log(response);
-            console.log(response.data.accessToken);
             var accessToken = response.data.accessToken;
-            refreshToken = response.refreshToken;
+            refreshToken = response.data.refreshToken;
             
-               /* axios.get(apiEndpointBase+'/hub/v1/campaigns', {
+                axios.get(apiEndpointBase+'/hub/v1/campaigns', {
                 "content-type": 'application/json',
                 "authorization": "Bearer "+ accessToken
                 }).then(response => {
@@ -45,7 +43,7 @@ app.post('/', (req, res) => {
                 }).catch( error => {
                     console.log("Get Campaigns ERROR");
                     console.log(error);
-                });*/
+                });
             
         }).catch( error => {
         console.log("Get AccessToken ERROR");
