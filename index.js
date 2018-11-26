@@ -36,7 +36,7 @@ app.post('/', (req, res) => {
 
                 axios.get(apiEndpointBase+'/hub/v1/campaigns', {
                 "content-type": 'application/json',
-                "authorization": "Bearer "+ decode.request.rest.refreshToken
+                "authorization": "Bearer "+ accessToken
                 }).then(response => {
                     console.log("Campaigns Data================================");
                     console.log(response);
