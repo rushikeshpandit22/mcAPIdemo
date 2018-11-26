@@ -33,8 +33,8 @@ app.post('/', (req, res) => {
         }).then(response =>{
             var accessToken = response.data.accessToken;
             refreshToken = response.data.refreshToken;
-            
-                axios.get(apiEndpointBase+'/hub/v1/campaigns', {
+            //apiEndpointBase+'/hub/v1/campaigns'
+                axios.get('https://mcs53v5db9s0nn0nrb3kgsl9qly1.rest.marketingcloudapis.com/hub/v1/campaigns', {
                 "content-type": 'application/json',
                 "authorization": "Bearer "+ accessToken
                 }).then(response => {
