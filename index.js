@@ -25,17 +25,34 @@ app.post('/', (req, res) => {
        var authEndpoint = decode.request.rest.authEndpoint;
        var apiEndpointBase = decode.request.rest.apiEndpointBase; 
     
-       axios.get('https://mcs53v5db9s0nn0nrb3kgsl9qly1.rest.marketingcloudapis.com/hub/v1/campaigns', {
-               "content-type": 'application/json',
-               "authorization": "Bearer "+ decode.request.rest.refreshToken
-       }).then(response => {
-            console.log("Response");
-           console.log(response);
-       }).catch( error => {
-            console.log("ERROR");
-           console.log(error);
-           
-       })
+        axios.post(authEndpoint,{
+            "clientSecret":"emdG17BLX14drPPNQ6QGmxMt",
+            "clientId":"e91wco2s002d3dfz70r3m9f0",
+            "refreshToken":refreshToken,
+            "accessType": "offline"        
+        }).then(response =>{
+            var accessToken = response.accessToken;
+            refreshToken = response.refreshToken;
+
+                axios.get(apiEndpointBase+'/hub/v1/campaigns', {
+                "content-type": 'application/json',
+                "authorization": "Bearer "+ decode.request.rest.refreshToken
+                }).then(response => {
+                    console.log("Campaigns Data================================");
+                    console.log(response);
+                }).catch( error => {
+                    console.log("Get Campaigns ERROR");
+                    console.log(error);
+                });
+            
+        }).catch( error => {
+        console.log("Get AccessToken ERROR");
+        console.log(error);
+        });  
+
+    
+    
+    
         res.sendFile(__dirname + '/index.html');
     
 });
