@@ -9,13 +9,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', __dirname + '/views');
 app.set('view engine','pug');
 var port = process.env.PORT || 3000;
+var jwt = require('jwt-simple');
 
 app.post('/', (req, res) => {
     
-    console.log(req);
-     console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-    console.log(res);
-    res.sendFile(__dirname + '/index.html');
+    //console.log(req);
+     //console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        var jwtToken = res.body.jwt;
+        console.log(jwtToken);
+        res.sendFile(__dirname + '/index.html');
+    
 });
 const props = ['Name'];
 app.post('/getTableData', (req, res) => {
