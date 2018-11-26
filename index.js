@@ -15,7 +15,7 @@ app.post('/', (req, res) => {
     
     //console.log(req);
      //console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        var jwtToken = res.body.jwt;
+        //var jwtToken = res.body.jwt;
         console.log(res.body);
         res.sendFile(__dirname + '/index.html');
     
