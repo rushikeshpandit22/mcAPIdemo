@@ -32,8 +32,8 @@ app.post('/', (req, res) => {
             "accessType": "offline"        
         }).then(response =>{
             console.log(response);
-            console.log(response.accessToken);
-            var accessToken = response.accessToken;
+            console.log(response.data.accessToken);
+            var accessToken = response.data.accessToken;
             refreshToken = response.refreshToken;
             
                /* axios.get(apiEndpointBase+'/hub/v1/campaigns', {
