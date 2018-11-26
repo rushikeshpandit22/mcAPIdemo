@@ -10,6 +10,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine','pug');
 var port = process.env.PORT || 3000;
 var jwt = require('jwt-simple');
+var axios = require('axios');
 
 app.post('/', (req, res) => {
     
@@ -20,12 +21,9 @@ app.post('/', (req, res) => {
        'aPwkRdSokdV9CsilYuZN3StLLeaKPUbFZRmptaoDcpFiEa2pUMSPNfbniKG3p06IlFak9TKz9CW0tTnlt1xuSybQkV3kCjGWN8cCsxyAGfHcb_050k-XplzYQyAJLwuYHBzBuU8w0FUbMRij64HjYljIwniEwlry348T3PDBIbPpq5qLGbWgdnOaTiG5SBW4qigC5ALKgSIArrPYvZgPBZS1TKGpm5cs4K-OQ3v7j_q1-qDawDQzSKN9Fdtj5g2';
        var decode = jwt.decode(jwtToken,secret);
        
-       fetch('https://mcs53v5db9s0nn0nrb3kgsl9qly1.rest.marketingcloudapis.com/hub/v1/campaigns', {
-       method:'GET',
-       headers: {
-           "content-type": 'application/json',
-           "authorization": "Bearer "+ decode.request.rest.refreshToken
-       }
+       axios.get('https://mcs53v5db9s0nn0nrb3kgsl9qly1.rest.marketingcloudapis.com/hub/v1/campaigns', {
+               "content-type": 'application/json',
+               "authorization": "Bearer "+ decode.request.rest.refreshToken
        }).then(response => {
             console.log("Response");
            console.log(response);
