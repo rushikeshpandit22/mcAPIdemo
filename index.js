@@ -34,13 +34,14 @@ app.post('/', (req, res) => {
             var accessToken = response.data.accessToken;
             refreshToken = response.data.refreshToken;
             //apiEndpointBase+'/hub/v1/campaigns'
-                axios.get('https://mcs53v5db9s0nn0nrb3kgsl9qly1.rest.marketingcloudapis.com/hub/v1/campaigns',{
+            //'https://mcs53v5db9s0nn0nrb3kgsl9qly1.rest.marketingcloudapis.com/hub/v1/campaigns'
+                axios.get(apiEndpointBase+'/hub/v1/campaigns',{
                 headers: {
                 "content-type": 'application/json',
                 "authorization": "Bearer "+ accessToken
                 }}).then(response => {
                     console.log("Campaigns Data================================");
-                    console.log(response);
+                    console.log(response.data);
                 }).catch( error => {
                     console.log("Get Campaigns ERROR");
                     console.log(error);
