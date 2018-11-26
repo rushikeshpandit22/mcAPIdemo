@@ -20,7 +20,7 @@ app.post('/', (req, res) => {
         var secret = 
         'aPwkRdSokdV9CsilYuZN3StLLeaKPUbFZRmptaoDcpFiEa2pUMSPNfbniKG3p06IlFak9TKz9CW0tTnlt1xuSybQkV3kCjGWN8cCsxyAGfHcb_050k-XplzYQyAJLwuYHBzBuU8w0FUbMRij64HjYljIwniEwlry348T3PDBIbPpq5qLGbWgdnOaTiG5SBW4qigC5ALKgSIArrPYvZgPBZS1TKGpm5cs4K-OQ3v7j_q1-qDawDQzSKN9Fdtj5g2';
         var decode = jwt.decode(jwtToken,secret);
-       console.log(decode.request.rest.refreshToken);
+       //console.log(decode.request.rest.refreshToken);
        var refreshToken = decode.request.rest.refreshToken;
        var authEndpoint = decode.request.rest.authEndpoint;
        var apiEndpointBase = decode.request.rest.apiEndpointBase; 
@@ -31,10 +31,12 @@ app.post('/', (req, res) => {
             "refreshToken":refreshToken,
             "accessType": "offline"        
         }).then(response =>{
+            console.log(response);
+            console.log(response.accessToken);
             var accessToken = response.accessToken;
             refreshToken = response.refreshToken;
-
-                axios.get(apiEndpointBase+'/hub/v1/campaigns', {
+            
+               /* axios.get(apiEndpointBase+'/hub/v1/campaigns', {
                 "content-type": 'application/json',
                 "authorization": "Bearer "+ accessToken
                 }).then(response => {
@@ -43,7 +45,7 @@ app.post('/', (req, res) => {
                 }).catch( error => {
                     console.log("Get Campaigns ERROR");
                     console.log(error);
-                });
+                });*/
             
         }).catch( error => {
         console.log("Get AccessToken ERROR");
