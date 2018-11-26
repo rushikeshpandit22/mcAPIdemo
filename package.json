@@ -12,7 +12,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "fuel-soap": "^2.1.0",
-    "jwt-simple": "^0.5.5", 
+    "jwt-simple":"^0.5.5", 
     "fuelsdk-node": "^2.1.0",
     "pug": "^2.0.3"
   }
