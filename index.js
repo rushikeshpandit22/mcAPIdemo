@@ -25,7 +25,8 @@ app.post('/', (req, res) => {
        var authEndpoint = decode.request.rest.authEndpoint;
        var apiEndpointBase = decode.request.rest.apiEndpointBase; 
         const client = new ET_Client('e91wco2s002d3dfz70r3m9f0', 'emdG17BLX14drPPNQ6QGmxMt',{apiEndpointBase, authEndpoint, 'https://mcs53v5db9s0nn0nrb3kgsl9qly1.soap.marketingcloudapis.com/'});
-      /*  axios.post(authEndpoint,{
+        console.log(client);  
+    /*  axios.post(authEndpoint,{
             "clientSecret":"emdG17BLX14drPPNQ6QGmxMt",
             "clientId":"e91wco2s002d3dfz70r3m9f0",
             "refreshToken":refreshToken,
@@ -52,9 +53,6 @@ app.post('/', (req, res) => {
         console.log(error);
         });  */
 
-    
-        console.log(client);
-    
         res.sendFile(__dirname + '/index.html');
     
 });
