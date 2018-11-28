@@ -16,7 +16,7 @@ app.post('/', (req, res) => {
     
     //console.log(req);
      //console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        var jwtToken = req.body.jwt;
+       /* var jwtToken = req.body.jwt;
         var secret = 
         'aPwkRdSokdV9CsilYuZN3StLLeaKPUbFZRmptaoDcpFiEa2pUMSPNfbniKG3p06IlFak9TKz9CW0tTnlt1xuSybQkV3kCjGWN8cCsxyAGfHcb_050k-XplzYQyAJLwuYHBzBuU8w0FUbMRij64HjYljIwniEwlry348T3PDBIbPpq5qLGbWgdnOaTiG5SBW4qigC5ALKgSIArrPYvZgPBZS1TKGpm5cs4K-OQ3v7j_q1-qDawDQzSKN9Fdtj5g2';
         var decode = jwt.decode(jwtToken,secret);
@@ -50,15 +50,15 @@ app.post('/', (req, res) => {
         }).catch( error => {
         console.log("Get AccessToken ERROR");
         console.log(error);
-        });  
+        });  */
 
     
-    
+        console.log(client);
     
         res.sendFile(__dirname + '/index.html');
     
 });
-const props = ['Name'];
+/*const props = ['Name'];
 app.post('/getTableData', (req, res) => {
 console.log(req.body);
     if (req.body.username == 'sfmc' && req.body.pwd == '1234') {
@@ -70,6 +70,6 @@ console.log(req.body);
         return res.redirect('/');
     }
 
-});
+});*/
 
 app.listen(port, () => console.log('Gator app listening on port '+port+''));
