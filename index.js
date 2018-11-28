@@ -1,5 +1,5 @@
 const ET_Client = require('fuelsdk-node');
-const client = new ET_Client('tzv6fcoi1oachkygw2hnvva9', 'l0sUcKPSJMZEHYxJE68eQG0v', 's7');
+//const client = new ET_Client('tzv6fcoi1oachkygw2hnvva9', 'l0sUcKPSJMZEHYxJE68eQG0v', 's7');
 var bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
@@ -16,7 +16,7 @@ app.post('/', (req, res) => {
     
     //console.log(req);
      //console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-       /* var jwtToken = req.body.jwt;
+        var jwtToken = req.body.jwt;
         var secret = 
         'aPwkRdSokdV9CsilYuZN3StLLeaKPUbFZRmptaoDcpFiEa2pUMSPNfbniKG3p06IlFak9TKz9CW0tTnlt1xuSybQkV3kCjGWN8cCsxyAGfHcb_050k-XplzYQyAJLwuYHBzBuU8w0FUbMRij64HjYljIwniEwlry348T3PDBIbPpq5qLGbWgdnOaTiG5SBW4qigC5ALKgSIArrPYvZgPBZS1TKGpm5cs4K-OQ3v7j_q1-qDawDQzSKN9Fdtj5g2';
         var decode = jwt.decode(jwtToken,secret);
@@ -24,8 +24,8 @@ app.post('/', (req, res) => {
        var refreshToken = decode.request.rest.refreshToken;
        var authEndpoint = decode.request.rest.authEndpoint;
        var apiEndpointBase = decode.request.rest.apiEndpointBase; 
-    
-        axios.post(authEndpoint,{
+        const client = new ET_Client('tzv6fcoi1oachkygw2hnvva9', 'l0sUcKPSJMZEHYxJE68eQG0v',{apiEndpointBase, authEndpoint, 'https://mcs53v5db9s0nn0nrb3kgsl9qly1.soap.marketingcloudapis.com/'});
+      /*  axios.post(authEndpoint,{
             "clientSecret":"emdG17BLX14drPPNQ6QGmxMt",
             "clientId":"e91wco2s002d3dfz70r3m9f0",
             "refreshToken":refreshToken,
