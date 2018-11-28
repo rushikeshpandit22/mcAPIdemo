@@ -52,6 +52,24 @@ app.post('/', (req, res) => {
         console.log("Get AccessToken ERROR");
         console.log(error);
         });  */
+    const props = { 
+        Name:'happyPanda', 
+        Description:'happyPanda', 
+        CustomerKey:'happyPandaXoXo', 
+        Fields : { 
+            Field : { 
+                Name: 'Name', 
+                FieldType: 'Text', 
+                IsPrimaryKey: true, 
+                MaxLength: 100, 
+                IsRequired: true 
+            } 
+            } 
+    }; 
+    client.dataExtension({props}).post((err,response) => { 
+        console.log(JSON.stringify(response)); 
+        console.log("\n"+JSON.stringify(err)); 
+    });
 
         res.sendFile(__dirname + '/index.html');
     
