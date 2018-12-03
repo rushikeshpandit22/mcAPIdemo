@@ -25,9 +25,9 @@ app.post('/', (req, res) => {
        var authEndpoint = decode.request.rest.authEndpoint;
        var apiEndpointBase = decode.request.rest.apiEndpointBase; 
        // const client = new ET_Client('e91wco2s002d3dfz70r3m9f0', 'emdG17BLX14drPPNQ6QGmxMt', apiEndpointBase, authEndpoint, 'https://mcs53v5db9s0nn0nrb3kgsl9qly1.soap.marketingcloudapis.com/');
-    const client = new ET_Client('e91wco2s002d3dfz70r3m9f0', 'emdG17BLX14drPPNQ6QGmxMt', 's7');   
-    console.log(client);  
-    /*  axios.post(authEndpoint,{
+   // const client = new ET_Client('e91wco2s002d3dfz70r3m9f0', 'emdG17BLX14drPPNQ6QGmxMt', 's7');   
+  //  console.log(client);  
+      axios.post(authEndpoint,{
             "clientSecret":"emdG17BLX14drPPNQ6QGmxMt",
             "clientId":"e91wco2s002d3dfz70r3m9f0",
             "refreshToken":refreshToken,
@@ -35,9 +35,10 @@ app.post('/', (req, res) => {
         }).then(response =>{
             var accessToken = response.data.accessToken;
             refreshToken = response.data.refreshToken;
+            console.log(accessToken);
             //apiEndpointBase+'/hub/v1/campaigns'
             //'https://mcs53v5db9s0nn0nrb3kgsl9qly1.rest.marketingcloudapis.com/hub/v1/campaigns'
-                axios.get(apiEndpointBase+'/hub/v1/campaigns',{
+             /*   axios.get(apiEndpointBase+'/hub/v1/campaigns',{
                 headers: {
                 "content-type": 'application/json',
                 "authorization": "Bearer "+ accessToken
@@ -47,13 +48,13 @@ app.post('/', (req, res) => {
                 }).catch( error => {
                     console.log("Get Campaigns ERROR");
                     console.log(error);
-                });
+                });*/
             
         }).catch( error => {
         console.log("Get AccessToken ERROR");
         console.log(error);
-        });  */
-    const props = { 
+        });  
+   /* const props = { 
         Name:'happyPanda', 
         Description:'happyPanda', 
         CustomerKey:'happyPandaXoXo', 
@@ -70,7 +71,7 @@ app.post('/', (req, res) => {
     client.dataExtension({props}).post((err,response) => { 
         console.log(JSON.stringify(response)); 
         console.log("\n"+JSON.stringify(err)); 
-    });
+    });*/
 
         res.sendFile(__dirname + '/index.html');
     
