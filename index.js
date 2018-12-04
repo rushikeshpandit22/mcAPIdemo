@@ -38,7 +38,7 @@ app.post('/', (req, res) => {
             console.log(accessToken);
             //apiEndpointBase+'/hub/v1/campaigns'
             //'https://mcs53v5db9s0nn0nrb3kgsl9qly1.rest.marketingcloudapis.com/hub/v1/campaigns'
-             /*   axios.get(apiEndpointBase+'/hub/v1/campaigns',{
+             axios.get(apiEndpointBase+'/hub/v1/campaigns',{
                 headers: {
                 "content-type": 'application/json',
                 "authorization": "Bearer "+ accessToken
@@ -48,7 +48,7 @@ app.post('/', (req, res) => {
                 }).catch( error => {
                     console.log("Get Campaigns ERROR");
                     console.log(error);
-                });*/
+                });
             
         }).catch( error => {
         console.log("Get AccessToken ERROR");
