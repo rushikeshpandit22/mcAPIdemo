@@ -12,18 +12,16 @@ var port = process.env.PORT || 3000;
 var jwt = require('jwt-simple');
 var axios = require('axios');
 
-const { Pool, Client } = require('pg')
-
+var pg = require('pg');
+var conString = "postgres://fpqxmoywayesyg:ae337dd3d3a2dd3f8c529e90091b04821f27530d21b2968bf580fee74dfcdc25@ec2-54-83-8-246.compute-1.amazonaws.com:5432/d8rb6oab555lft";
+pg.defaults.ssl = true;
+pg.defaults.poolSize = 20;
+var client = new pg.Client(conString);
+client.connect();
 
 
 app.post('/', (req, res) => {
-    
-    const client = new Client(process.env.DATABASE_URL);
-
-    
-   // pg.connect(process.env.DATABASE_URL, function(err, client, done) { 
        console.log(client);
-   // });
    
       /*  var jwtToken = req.body.jwt;
         var secret = 
