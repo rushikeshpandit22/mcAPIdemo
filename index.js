@@ -21,7 +21,18 @@ client.connect();
 
 
 app.post('/', (req, res) => {
-       console.log(client);
+       const query = {
+              text: 'INSERT INTO sfmctest.demo("Name", "Email") VALUES($1, $2)',
+              values: ['panda', 'panda@gmail.com'],
+       }
+       client.query(query,(err, res) => {
+              if (err) {
+                     console.log(err.stack)
+              } else {
+                     console.log("Data inserted");  
+                     console.log(res);
+              }
+       })
    
       /*  var jwtToken = req.body.jwt;
         var secret = 
