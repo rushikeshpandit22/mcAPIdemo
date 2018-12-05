@@ -21,24 +21,24 @@ client.connect();
 
 
 app.post('/', (req, res) => {
-       var a = [{ Name:'panda3', Email:'panda@gmail3.com'},{Name:'panda4', Email:'panda@gmail4.com'},{Name:'panda6', Email:'panda@gmail6.com'}];
-       const query = {
-              text: 'INSERT INTO sfmctest.demo("Name", "Email") VALUES($1, $2)'
-              //values:a,
+       //var a = [{ Name:'panda3', Email:'panda@gmail3.com'},{Name:'panda4', Email:'panda@gmail4.com'},{Name:'panda6', Email:'panda@gmail6.com'}];
+      /* const query = {
+              text: 'INSERT INTO sfmctest.demo("Name", "Email") VALUES($1, $2)',
+              values:['panda4', 'panda@gmail4.com],
        }
-       client.query(query, a,(err, res) => {
+       client.query(query,(err, res) => {
               if (err) {
                      console.log(err.stack)
               } else {
                      console.log("Data inserted");  
                      console.log(res.rowCount);
               }
-       })
+       })*/
    
-      /*  var jwtToken = req.body.jwt;
-        var secret = 
-        'aPwkRdSokdV9CsilYuZN3StLLeaKPUbFZRmptaoDcpFiEa2pUMSPNfbniKG3p06IlFak9TKz9CW0tTnlt1xuSybQkV3kCjGWN8cCsxyAGfHcb_050k-XplzYQyAJLwuYHBzBuU8w0FUbMRij64HjYljIwniEwlry348T3PDBIbPpq5qLGbWgdnOaTiG5SBW4qigC5ALKgSIArrPYvZgPBZS1TKGpm5cs4K-OQ3v7j_q1-qDawDQzSKN9Fdtj5g2';
-        var decode = jwt.decode(jwtToken,secret);
+       var jwtToken = req.body.jwt;
+       var secret = 
+       'aPwkRdSokdV9CsilYuZN3StLLeaKPUbFZRmptaoDcpFiEa2pUMSPNfbniKG3p06IlFak9TKz9CW0tTnlt1xuSybQkV3kCjGWN8cCsxyAGfHcb_050k-XplzYQyAJLwuYHBzBuU8w0FUbMRij64HjYljIwniEwlry348T3PDBIbPpq5qLGbWgdnOaTiG5SBW4qigC5ALKgSIArrPYvZgPBZS1TKGpm5cs4K-OQ3v7j_q1-qDawDQzSKN9Fdtj5g2';
+       var decode = jwt.decode(jwtToken,secret);
        var refreshToken = decode.request.rest.refreshToken;
        var authEndpoint = decode.request.rest.authEndpoint;
        var apiEndpointBase = decode.request.rest.apiEndpointBase; 
@@ -54,7 +54,8 @@ app.post('/', (req, res) => {
             console.log(accessToken);
             //apiEndpointBase+'/hub/v1/campaigns'
             //'https://mcs53v5db9s0nn0nrb3kgsl9qly1.rest.marketingcloudapis.com/hub/v1/campaigns'
-             axios.get(apiEndpointBase+'/hub/v1/campaigns',{
+             //axios.get(apiEndpointBase+'/hub/v1/campaigns',{
+             axios.get(apiEndpointBase+'data/v1/customobjectdata/key/AMPScript/rowset/,{
                 headers: {
                 "content-type": 'application/json',
                 "authorization": "Bearer "+ accessToken
@@ -69,7 +70,7 @@ app.post('/', (req, res) => {
         }).catch( error => {
         console.log("Get AccessToken ERROR");
         console.log(error);
-        });*/
+        });
     
     
     
