@@ -21,7 +21,7 @@ client.connect();
 
 
 app.post('/', (req, res) => {
-       var a = [{'panda1', 'panda@gmail1.com'},{'panda2', 'panda@gmail2.com'},{'panda3', 'panda@gmail3.com'}]
+       var a = [{ Name:'panda1', Email:'panda@gmail1.com'},{Name:'panda2', Email:'panda@gmail2.com'},{Name:'panda3', Email:'panda@gmail3.com'}]
        const query = {
               text: 'INSERT INTO sfmctest.demo("Name", "Email") VALUES($1, $2)',
               values:a,
