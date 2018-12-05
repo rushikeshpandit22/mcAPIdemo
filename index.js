@@ -21,12 +21,12 @@ client.connect();
 
 
 app.post('/', (req, res) => {
-       var a = { Name:'panda1', Email:'panda@gmail1.com'},{Name:'panda2', Email:'panda@gmail2.com'};
+       var a = [{ Name:'panda1', Email:'panda@gmail1.com'},{Name:'panda2', Email:'panda@gmail2.com'}];
        const query = {
               text: 'INSERT INTO sfmctest.demo("Name", "Email") VALUES($1, $2)'
               //values:a,
        }
-       client.query(query, [a],(err, res) => {
+       client.query(query, a,(err, res) => {
               if (err) {
                      console.log(err.stack)
               } else {
