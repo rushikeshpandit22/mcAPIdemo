@@ -55,7 +55,7 @@ app.post('/', (req, res) => {
             //apiEndpointBase+'/hub/v1/campaigns'
             //'https://mcs53v5db9s0nn0nrb3kgsl9qly1.rest.marketingcloudapis.com/hub/v1/campaigns'
              //axios.get(apiEndpointBase+'/hub/v1/campaigns',{
-             axios.get(apiEndpointBase+'data/v1/customobjectdata/key/AMPScript/rowset/,{
+             axios.get(apiEndpointBase+'data/v1/customobjectdata/key/AMPScript/rowset/',{
                 headers: {
                 "content-type": 'application/json',
                 "authorization": "Bearer "+ accessToken
