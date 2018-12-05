@@ -12,21 +12,27 @@ var port = process.env.PORT || 3000;
 var jwt = require('jwt-simple');
 var axios = require('axios');
 
+var pg = require('pg');
+
+
+
 app.post('/', (req, res) => {
     
-    //console.log(req);
-     //console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        var jwtToken = req.body.jwt;
+
+    pg.defaults.ssl = true;
+    pg.defaults.poolSize = 20; 
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) { 
+        console.log(client);
+    });
+   
+      /*  var jwtToken = req.body.jwt;
         var secret = 
         'aPwkRdSokdV9CsilYuZN3StLLeaKPUbFZRmptaoDcpFiEa2pUMSPNfbniKG3p06IlFak9TKz9CW0tTnlt1xuSybQkV3kCjGWN8cCsxyAGfHcb_050k-XplzYQyAJLwuYHBzBuU8w0FUbMRij64HjYljIwniEwlry348T3PDBIbPpq5qLGbWgdnOaTiG5SBW4qigC5ALKgSIArrPYvZgPBZS1TKGpm5cs4K-OQ3v7j_q1-qDawDQzSKN9Fdtj5g2';
         var decode = jwt.decode(jwtToken,secret);
-       //console.log(decode.request.rest.refreshToken);
        var refreshToken = decode.request.rest.refreshToken;
        var authEndpoint = decode.request.rest.authEndpoint;
        var apiEndpointBase = decode.request.rest.apiEndpointBase; 
-       // const client = new ET_Client('e91wco2s002d3dfz70r3m9f0', 'emdG17BLX14drPPNQ6QGmxMt', apiEndpointBase, authEndpoint, 'https://mcs53v5db9s0nn0nrb3kgsl9qly1.soap.marketingcloudapis.com/');
    // const client = new ET_Client('e91wco2s002d3dfz70r3m9f0', 'emdG17BLX14drPPNQ6QGmxMt', 's7');   
-  //  console.log(client);  
       axios.post(authEndpoint,{
             "clientSecret":"emdG17BLX14drPPNQ6QGmxMt",
             "clientId":"e91wco2s002d3dfz70r3m9f0",
@@ -53,7 +59,11 @@ app.post('/', (req, res) => {
         }).catch( error => {
         console.log("Get AccessToken ERROR");
         console.log(error);
-        });  
+        });*/
+    
+    
+    
+    
    /* const props = { 
         Name:'happyPanda', 
         Description:'happyPanda', 
