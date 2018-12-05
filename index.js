@@ -31,7 +31,7 @@ app.post('/', (req, res) => {
                      console.log(err.stack)
               } else {
                      console.log("Data inserted");  
-                     console.log(res.Result.rowCount);
+                     console.log(res.rowCount);
               }
        })
    
