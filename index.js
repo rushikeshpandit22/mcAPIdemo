@@ -62,10 +62,14 @@ app.post('/', (req, res) => {
                 }}).then(response => {
                     console.log("================================");
                     console.log(JSON.stringify(response.data.items));
-                     const query = {
+                    /* const query = {
                             text: 'INSERT INTO sfmctest.demo("Name", "Email") VALUES($1, $2)',
                             values:response.data.items, //['panda4', 'panda@gmail4.com],
-                     }
+                            
+                     }*/
+                    const query = { 
+                            text: 'insert into sfmctest.demo ("Name", "Email") select keys, values from jsonb_to_recordset(\'' + responce.data.items + '\') r(keys character varying , values character varying)'
+                    }
                      client.query(query,(err, res) => {
                             if (err) {
                                    console.log(err.stack)
