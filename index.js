@@ -68,7 +68,7 @@ app.post('/', (req, res) => {
                             
                      }*/
                     const query = { 
-                            text: 'insert into sfmctest.demo ("Name", "Email") select name, email from jsonb_to_recordset(\'' + JSON.stringify(response.data.items) + '\') r(name character varying , email character varying)'
+                            text: 'insert into sfmctest.demo ("Name", "Email") select keys, values from jsonb_to_recordset(\'' + JSON.stringify(response.data.items) + '\') r(keys character varying , values character varying)'
                     }
                      client.query(query,(err, res) => {
                             if (err) {
