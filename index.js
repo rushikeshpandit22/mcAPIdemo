@@ -62,6 +62,18 @@ app.post('/', (req, res) => {
                 }}).then(response => {
                     console.log("================================");
                     console.log(JSON.stringify(response.data.items));
+                     const query = {
+                            text: 'INSERT INTO sfmctest.demo("Name", "Email") VALUES($1, $2)',
+                            values:response.data.items, //['panda4', 'panda@gmail4.com],
+                     }
+                     client.query(query,(err, res) => {
+                            if (err) {
+                                   console.log(err.stack)
+                            } else {
+                                   console.log("Data inserted");  
+                                   console.log(res.rowCount);
+                            }
+                     });
                     
                 }).catch( error => {
                     console.log("Get Campaigns ERROR");
