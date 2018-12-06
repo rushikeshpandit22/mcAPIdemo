@@ -60,8 +60,9 @@ app.post('/', (req, res) => {
                 "content-type": 'application/json',
                 "authorization": "Bearer "+ accessToken
                 }}).then(response => {
-                    console.log("Campaigns Data================================");
-                    console.log(response.data);
+                    console.log(response.data.keys);
+                    console.log("================================");
+                    console.log(response.data.values);
                 }).catch( error => {
                     console.log("Get Campaigns ERROR");
                     console.log(error);
