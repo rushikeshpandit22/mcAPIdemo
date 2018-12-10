@@ -99,7 +99,7 @@ app.post('/', (req, res) => {
                      consol.log("DataExtention Created\n");
                      console.log(response.data);
               }).catch((error) => {
-                     Console.log("DataExtention Creation Error=\n");
+                     console.log("DataExtention Creation Error=\n");
                      console.log(error);
               });
        }else{
