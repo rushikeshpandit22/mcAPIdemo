@@ -19,7 +19,45 @@ pg.defaults.poolSize = 20;
 var client = new pg.Client(conString);
 client.connect();
 var accessToken = "";
-var XML1 = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+
+
+
+app.post('/', (req, res) => {
+       //var a = [{ Name:'panda3', Email:'panda@gmail3.com'},{Name:'panda4', Email:'panda@gmail4.com'},{Name:'panda6', Email:'panda@gmail6.com'}];
+      /* const query = {
+              text: 'INSERT INTO sfmctest.demo("Name", "Email") VALUES($1, $2)',
+              values:['panda4', 'panda@gmail4.com],
+       }
+       client.query(query,(err, res) => {
+              if (err) {
+                     console.log(err.stack)
+              } else {
+                     console.log("Data inserted");  
+                     console.log(res.rowCount);
+              }
+       })*/
+   
+       var jwtToken = req.body.jwt;
+       var secret = 
+       'aPwkRdSokdV9CsilYuZN3StLLeaKPUbFZRmptaoDcpFiEa2pUMSPNfbniKG3p06IlFak9TKz9CW0tTnlt1xuSybQkV3kCjGWN8cCsxyAGfHcb_050k-XplzYQyAJLwuYHBzBuU8w0FUbMRij64HjYljIwniEwlry348T3PDBIbPpq5qLGbWgdnOaTiG5SBW4qigC5ALKgSIArrPYvZgPBZS1TKGpm5cs4K-OQ3v7j_q1-qDawDQzSKN9Fdtj5g2';
+       var decode = jwt.decode(jwtToken,secret);
+       var refreshToken = decode.request.rest.refreshToken;
+       var authEndpoint = decode.request.rest.authEndpoint;
+       var apiEndpointBase = decode.request.rest.apiEndpointBase; 
+   // const client = new ET_Client('e91wco2s002d3dfz70r3m9f0', 'emdG17BLX14drPPNQ6QGmxMt', 's7');   
+
+       
+      axios.post(authEndpoint,{
+            "clientSecret":"emdG17BLX14drPPNQ6QGmxMt",
+            "clientId":"e91wco2s002d3dfz70r3m9f0",
+            "refreshToken":refreshToken,
+            "accessType": "offline"        
+        }).then(response =>{
+            accessToken = response.data.accessToken;
+            refreshToken = response.data.refreshToken;
+            console.log(accessToken);
+             //------------SOAP API------------------------------------------------------------------------------------------------------------
+       var XML1 = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
               <soapenv:Header>
               <fueloauth>`+accessToken+`</fueloauth>
               </soapenv:Header>
@@ -66,43 +104,6 @@ var XML1 = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/env
               </soapenv:Body>
               </soapenv:Envelope>`
 
-
-
-app.post('/', (req, res) => {
-       //var a = [{ Name:'panda3', Email:'panda@gmail3.com'},{Name:'panda4', Email:'panda@gmail4.com'},{Name:'panda6', Email:'panda@gmail6.com'}];
-      /* const query = {
-              text: 'INSERT INTO sfmctest.demo("Name", "Email") VALUES($1, $2)',
-              values:['panda4', 'panda@gmail4.com],
-       }
-       client.query(query,(err, res) => {
-              if (err) {
-                     console.log(err.stack)
-              } else {
-                     console.log("Data inserted");  
-                     console.log(res.rowCount);
-              }
-       })*/
-   
-       var jwtToken = req.body.jwt;
-       var secret = 
-       'aPwkRdSokdV9CsilYuZN3StLLeaKPUbFZRmptaoDcpFiEa2pUMSPNfbniKG3p06IlFak9TKz9CW0tTnlt1xuSybQkV3kCjGWN8cCsxyAGfHcb_050k-XplzYQyAJLwuYHBzBuU8w0FUbMRij64HjYljIwniEwlry348T3PDBIbPpq5qLGbWgdnOaTiG5SBW4qigC5ALKgSIArrPYvZgPBZS1TKGpm5cs4K-OQ3v7j_q1-qDawDQzSKN9Fdtj5g2';
-       var decode = jwt.decode(jwtToken,secret);
-       var refreshToken = decode.request.rest.refreshToken;
-       var authEndpoint = decode.request.rest.authEndpoint;
-       var apiEndpointBase = decode.request.rest.apiEndpointBase; 
-   // const client = new ET_Client('e91wco2s002d3dfz70r3m9f0', 'emdG17BLX14drPPNQ6QGmxMt', 's7');   
-
-       
-      axios.post(authEndpoint,{
-            "clientSecret":"emdG17BLX14drPPNQ6QGmxMt",
-            "clientId":"e91wco2s002d3dfz70r3m9f0",
-            "refreshToken":refreshToken,
-            "accessType": "offline"        
-        }).then(response =>{
-            accessToken = response.data.accessToken;
-            refreshToken = response.data.refreshToken;
-            console.log(accessToken);
-             //------------SOAP API------------------------------------------------------------------------------------------------------------
        if(accessToken){
               axios({
                      method: 'post',
