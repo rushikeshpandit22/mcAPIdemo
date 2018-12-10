@@ -57,7 +57,7 @@ app.post('/', (req, res) => {
             refreshToken = response.data.refreshToken;
             console.log(accessToken);
              //------------SOAP API------------------------------------------------------------------------------------------------------------
-       var XML1 = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+      /* var XML1 = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
               <soapenv:Header>
               <fueloauth>`+accessToken+`</fueloauth>
               </soapenv:Header>
@@ -121,7 +121,7 @@ app.post('/', (req, res) => {
               });
        }else{
               console.log("Access Token not found");
-       }     
+       }     */
              
             //------------------------------------------------------------------------------------------------------------------------ 
             //apiEndpointBase+'/hub/v1/campaigns'
