@@ -12,7 +12,7 @@ var port = process.env.PORT || 3000;
 var jwt = require('jwt-simple');
 var axios = require('axios');
 var pg = require('pg');
-
+var parseString = require('xml2js').parseString;
 
 var conString = "postgres://fpqxmoywayesyg:ae337dd3d3a2dd3f8c529e90091b04821f27530d21b2968bf580fee74dfcdc25@ec2-54-83-8-246.compute-1.amazonaws.com:5432/d8rb6oab555lft";
 pg.defaults.ssl = true;
@@ -97,7 +97,14 @@ app.post('/', (req, res) => {
                      data: FinalXML,
               }).then((response) => {
                      console.log("#####################################\nDataExtention Created\n");
-                     console.log(response.data.Results.StatusMessage);
+                      parseString(xml, function (err, result) {
+                        if(result){
+                           console.log(result+"\n@@@@@@@@@@@@@@@@@@@@@@@"); 
+                          console.log(JSON.stringify(result.data.Results.StatusMessage));
+                        }else{
+                          console.log(err);
+                        }
+                      }); 
               }).catch((error) => {
                      console.log("DataExtention Creation Error=\n");
                      console.log(error);
