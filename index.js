@@ -97,7 +97,7 @@ app.post('/', (req, res) => {
                      data: FinalXML,
               }).then((response) => {
                      console.log("#####################################\nDataExtention Created\n");
-                      parseString(xml, function (err, result) {
+                      parseString(response, function (err, result) {
                         if(result){
                            console.log(result+"\n@@@@@@@@@@@@@@@@@@@@@@@"); 
                           console.log(JSON.stringify(result.data.Results.StatusMessage));
