@@ -97,10 +97,10 @@ app.post('/', (req, res) => {
                      data: FinalXML,
               }).then((response) => {
                      console.log("#####################################\nDataExtention Created\n");
-                      parseString(response, function (err, result) {
+                      parseString(response.data, function (err, result) {
                         if(result){
                            console.log(result+"\n@@@@@@@@@@@@@@@@@@@@@@@"); 
-                          console.log(JSON.stringify(result.data.Results.StatusMessage));
+                          console.log(JSON.stringify(result.Results.StatusMessage));
                         }else{
                           console.log(err);
                         }
