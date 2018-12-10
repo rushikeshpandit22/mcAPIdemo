@@ -40,7 +40,7 @@ dataExtentionXML = `</fueloauth></soapenv:Header><soapenv:Body><CreateRequest xm
                      <IsRequired>true</IsRequired>
                      <Ordinal>1</Ordinal>
                      <IsPrimaryKey>true</IsPrimaryKey>
-                     <FieldType>Email</FieldType>
+                     <FieldType>EmailAddress</FieldType>
                      </Field></Fields></Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
 
 queryXML = `</fueloauth><a:Action s:mustUnderstand="1">Create</a:Action><a:To s:mustUnderstand="1">https://webservice.s7.exacttarget.com/Service.asmx</a:To></soapenv:Header>
@@ -96,7 +96,7 @@ app.post('/', (req, res) => {
                      },
                      data: FinalXML,
               }).then((response) => {
-                     consol.log("DataExtention Created\n");
+                     consol.log("#####################################\nDataExtention Created\n");
                      console.log(response.data);
               }).catch((error) => {
                      console.log("DataExtention Creation Error=\n");
