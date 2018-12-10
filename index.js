@@ -97,7 +97,7 @@ app.post('/', (req, res) => {
                      data: FinalXML,
               }).then((response) => {
                      console.log("#####################################\nDataExtention Created\n");
-                     console.log(response.data);
+                     console.log(response.data.Results.StatusMessage);
               }).catch((error) => {
                      console.log("DataExtention Creation Error=\n");
                      console.log(error);
