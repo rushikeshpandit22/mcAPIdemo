@@ -100,7 +100,7 @@ app.post('/', (req, res) => {
                       parseString(response.data, function (err, result) {
                         if(result){
                            console.log(result+"\n@@@@@@@@@@@@@@@@@@@@@@@"); 
-                          console.log(JSON.stringify(result.Results.StatusMessage));
+                          console.log(JSON.stringify(result).Results);
                         }else{
                           console.log(err);
                         }
