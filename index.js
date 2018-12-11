@@ -99,8 +99,6 @@ app.post('/', (req, res) => {
                      console.log("#####################################\nDataExtention Created\n");
                       parseString(response.data, function (err, result) {
                         if(result){
-                           console.dir(result+"\n@@@@@@@@@@@@@@@@@@@@@@@"); 
-                           console.log(JSON.stringify(result));
                           var xmlJson = JSON.stringify(result);
                           var b = xmlJson['soap:Envelope'];
                          console.log(xmlJson);
