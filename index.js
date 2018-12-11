@@ -19,13 +19,13 @@ pg.defaults.ssl = true;
 pg.defaults.poolSize = 20;
 var client = new pg.Client(conString);
 client.connect();
-var accessToken = "",dataExtentionXML, queryXML, automationXML, SoapPreHeader, FinalXML = "";
+var accessToken = "",dataExtensionXML, queryXML, automationXML, SoapPreHeader, FinalXML = "";
 
 SoapPreHeader = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
               <soapenv:Header>
               <fueloauth>`;
 
-dataExtentionXML = `</fueloauth></soapenv:Header><soapenv:Body><CreateRequest xmlns="http://exacttarget.com/wsdl/partnerAPI"><Options/><Objects xsi:type="DataExtension">
+dataExtensionXML = `</fueloauth></soapenv:Header><soapenv:Body><CreateRequest xmlns="http://exacttarget.com/wsdl/partnerAPI"><Options/><Objects xsi:type="DataExtension">
                      <Client>
                      <ID>7291811</ID>
                      </Client>
@@ -85,7 +85,7 @@ app.post('/', (req, res) => {
 //------------SOAP API------------------------------------------------------------------------------------------------------------
      
        if(accessToken){
-             FinalXML = SoapPreHeader+accessToken+dataExtentionXML; 
+             FinalXML = SoapPreHeader+accessToken+dataExtensionXML; 
               axios({
                      method: 'post',
                      url: 'https://webservice.s7.exacttarget.com/Service.asmx',
@@ -96,13 +96,19 @@ app.post('/', (req, res) => {
                      },
                      data: FinalXML,
               }).then((response) => {
-                     console.log("#####################################\nDataExtention Created\n");
                       parseString(response.data, function (err, result) {
                         if(result){
-                         var xmlJson = JSON.stringify(result);
-                         var b = result['soap:Envelope'];
-                         console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);
-                         console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]);
+                           var xmlJson = JSON.stringify(result);
+                           var b = result['soap:Envelope'];
+                           console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);
+                           console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]);
+                           console.log("API Call Status = ",b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]); 
+                           if( b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0] != 'Error'){
+                               console.log("DataExtension Created");
+                                
+                           }else{
+                               console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);  
+                           }
                         }else{
                           console.log(err);
                         }
