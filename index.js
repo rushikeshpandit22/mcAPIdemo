@@ -99,9 +99,10 @@ app.post('/', (req, res) => {
                      console.log("#####################################\nDataExtention Created\n");
                       parseString(response.data, function (err, result) {
                         if(result){
-                          var xmlJson = JSON.stringify(result);
-                          var b = result['soap:Envelope'];
+                         var xmlJson = JSON.stringify(result);
+                         var b = result['soap:Envelope'];
                          console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);
+                         console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]);
                         }else{
                           console.log(err);
                         }
