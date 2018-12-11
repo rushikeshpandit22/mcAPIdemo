@@ -105,7 +105,6 @@ app.post('/', (req, res) => {
                            console.log("API Call Status = ",b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]); 
                            if( b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0] != 'Error'){
                                console.log("DataExtension Created");
-                                
                            }else{
                                console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);  
                            }
