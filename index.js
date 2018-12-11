@@ -103,7 +103,7 @@ app.post('/', (req, res) => {
                            console.log(JSON.stringify(result));
                           var xmlJson = JSON.stringify(result);
                           var b = xmlJson['soap:Envelope'];
-                         console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode);
+                         console.log(b);
                         }else{
                           console.log(err);
                         }
