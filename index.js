@@ -99,8 +99,8 @@ app.post('/', (req, res) => {
                      console.log("#####################################\nDataExtention Created\n");
                       parseString(response.data, function (err, result) {
                         if(result){
-                           console.log(result+"\n@@@@@@@@@@@@@@@@@@@@@@@"); 
-                          console.log(JSON.stringify(result).Results);
+                           console.dir(result+"\n@@@@@@@@@@@@@@@@@@@@@@@"); 
+                           console.log(JSON.stringify(result));
                         }else{
                           console.log(err);
                         }
