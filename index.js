@@ -101,6 +101,9 @@ app.post('/', (req, res) => {
                         if(result){
                            console.dir(result+"\n@@@@@@@@@@@@@@@@@@@@@@@"); 
                            console.log(JSON.stringify(result));
+                          var xmlJson = JSON.stringify(result);
+                          var b = xmlJson['soap:Envelope'];
+                         console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode);
                         }else{
                           console.log(err);
                         }
