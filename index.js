@@ -98,51 +98,47 @@ app.post('/', (req, res) => {
               }).then((response) => {
                       parseString(response.data, function (err, result) {
                         if(result){
-                           var xmlJson = JSON.stringify(result);
                            var b = result['soap:Envelope'];
-                           console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);
-                           console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]);
                            console.log("API Call Status = ",b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]); 
                            if( b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0] != 'Error'){
-                               console.log("DataExtension Created");
-                              FinalXML = SoapPreHeader+accessToken+queryXML;
-                              axios({
-                                       method: 'post',
-                                       url: 'https://webservice.s7.exacttarget.com/Service.asmx',
-                                       headers: {
-                                       "Content-Type":"text/xml;charset=UTF-8" ,
-                                       "Accept-Encoding":"gzip,deflate",
-                                       "SOAPAction":"Create"
-                                       },
-                                       data: FinalXML,
-                              }).then((response) => {
-                                  parseString(response.data, function (err, result) {
-                                          if(result){
-                                             let xmlJson = JSON.stringify(result);
-                                             let Envelope = result['soap:Envelope'];
-                                             console.log(xmlJson+"\n\n"+b);
-                                             console.log(Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]);
-                                             console.log("API Call Status = ",Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]); 
-                                            if( Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0] != 'Error'){
-                                                 console.log(Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);
-                                             }else{
-                                                 console.log(Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);  
-                                             }
-                                          }else{
-                                            console.log(err);
-                                          }
+                              console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);
+                                          FinalXML = SoapPreHeader+accessToken+queryXML;
+                                          axios({
+                                                   method: 'post',
+                                                   url: 'https://webservice.s7.exacttarget.com/Service.asmx',
+                                                   headers: {
+                                                   "Content-Type":"text/xml;charset=UTF-8" ,
+                                                   "Accept-Encoding":"gzip,deflate",
+                                                   "SOAPAction":"Create"
+                                                   },
+                                                   data: FinalXML,
+                                          }).then((response) => {
+                                              parseString(response.data, function (err, result) {
+                                                      if(result){
+                                                           console.log(JSON..stringify(result));
+                                                           let Envelope = result['soap:Envelope'];
+                                                           console.log(xmlJson+"\n\n"+b);
+                                                           console.log("API Call Status = ",Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]); 
+                                                          if( Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0] != 'Error'){
+                                                               console.log(Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);
+                                                           }else{
+                                                               console.log(Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);  
+                                                           }
+                                                      }else{
+                                                         console.log("Parsing Error"+err);
+                                                      }
+                                                    }); 
+
+                                        }).catch((error) => {
+                                               console.log("Query Activity Creation Error=\n");
+                                               console.log(error);
                                         }); 
 
-            }).catch((error) => {
-                   console.log("Query Activity Creation Error=\n");
-                   console.log(error);
-            }); 
-                             
                            }else{
                                console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);  
                            }
                         }else{
-                          console.log(err);
+                          console.log("Parssing Error"+err);
                         }
                       }); 
               }).catch((error) => {
