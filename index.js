@@ -179,10 +179,11 @@ app.post('/', (req, res) => {
                                                                                          data: FinalXML,
                                                                                 }).then((response) => {
                                                                                         parseString(response.data, function (err, result) {
+                                                                                        console.log(JSON.stringify(result));  
                                                                                         if(result){
                                                                                           let Envelope = result['soap:Envelope'];
                                                                                           console.log("\n Automation API Call Status = ",Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]);
-                                                                                          console.log("API Message=",Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);
+                                                                                          console.log("API Message=",Envelope['soap:Body'][0].CreateResponse[0].Results[0]);
                                                                                         }else{
                                                                                           console.log("Automation Parsing Error=",err);
                                                                                         } 
