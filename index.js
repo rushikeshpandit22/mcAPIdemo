@@ -85,7 +85,7 @@ app.post('/', (req, res) => {
 //------------SOAP API------------------------------------------------------------------------------------------------------------
      
        if(accessToken){
-            /* FinalXML = SoapPreHeader+accessToken+dataExtensionXML; 
+             FinalXML = SoapPreHeader+accessToken+dataExtensionXML; 
               axios({
                      method: 'post',
                      url: 'https://webservice.s7.exacttarget.com/Service.asmx',
@@ -115,8 +115,8 @@ app.post('/', (req, res) => {
               }).catch((error) => {
                      console.log("DataExtention Creation Error=\n");
                      console.log(error);
-              });*/
-         FinalXML = SoapPreHeader+accessToken+queryXML;
+              });
+        /* FinalXML = SoapPreHeader+accessToken+queryXML;
           axios({
                      method: 'post',
                      url: 'https://webservice.s7.exacttarget.com/Service.asmx',
@@ -140,7 +140,7 @@ app.post('/', (req, res) => {
                            }else{
                                console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);  
                            }*/
-                        }else{
+                     /*   }else{
                           console.log(err);
                         }
                       }); 
@@ -151,7 +151,7 @@ app.post('/', (req, res) => {
             });
        }else{
               console.log("Access Token not found");
-       }     
+       }    */ 
              
 //-----------------------Rest_API------------------------------------------------------------------------------------------------- 
             //apiEndpointBase+'/hub/v1/campaigns'
