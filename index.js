@@ -64,7 +64,7 @@ queryXML = `</fueloauth><a:Action s:mustUnderstand="1">Create</a:Action><a:To s:
             <TargetUpdateType>Overwrite</TargetUpdateType>
          </Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
 
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
        var jwtToken = req.body.jwt;
        var secret = 
        'aPwkRdSokdV9CsilYuZN3StLLeaKPUbFZRmptaoDcpFiEa2pUMSPNfbniKG3p06IlFak9TKz9CW0tTnlt1xuSybQkV3kCjGWN8cCsxyAGfHcb_050k-XplzYQyAJLwuYHBzBuU8w0FUbMRij64HjYljIwniEwlry348T3PDBIbPpq5qLGbWgdnOaTiG5SBW4qigC5ALKgSIArrPYvZgPBZS1TKGpm5cs4K-OQ3v7j_q1-qDawDQzSKN9Fdtj5g2';
