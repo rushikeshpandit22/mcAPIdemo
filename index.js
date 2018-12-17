@@ -43,7 +43,7 @@ dataExtensionXML = `</fueloauth></soapenv:Header><soapenv:Body><CreateRequest xm
                      <FieldType>EmailAddress</FieldType>
                      </Field></Fields></Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
 
-queryXML = `</fueloauth><a:Action s:mustUnderstand="1">Create</a:Action><a:To s:mustUnderstand="1">https://webservice.s7.exacttarget.com/Service.asmx</a:To></soapenv:Header>
+queryXML = `</fueloauth></soapenv:Header>
    <soapenv:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
       <CreateRequest xmlns="http://exacttarget.com/wsdl/partnerAPI">
          <Options></Options>
