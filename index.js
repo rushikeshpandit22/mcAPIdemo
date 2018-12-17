@@ -53,7 +53,7 @@ queryXML = `</fueloauth></soapenv:Header>
             <CustomerKey>API QUERY ACTIVITY</CustomerKey>
             <Name>API QUERY ACTIVITY</Name>
             <Description>API QUERY ACTIVITY</Description>
-            <QueryText>Select EmailAddress as EMAIL from [_Subscribers]</QueryText>
+            <QueryText>Select EmailAddress as CustomerEmail from [_Subscribers]</QueryText>
             <TargetType>DE</TargetType>
             <DataExtensionTarget>
                <PartnerKey xsi:nil="true"></PartnerKey>
