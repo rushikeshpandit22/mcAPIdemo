@@ -143,7 +143,7 @@ app.post('/', (req, res) => {
                                                                                       <PartnerKey xsi:nil="true"/>
                                                                                       <ObjectID>`+Envelope['soap:Body'][0].CreateResponse[0].Results[0].Object[0].ObjectID[0]+`</ObjectID>
                                                                                       <!--ObjectID of Query-->
-                                                                                      <Name>API QUERY ACTIVITY2</Name>
+                                                                                      <Name>Envelope['soap:Body'][0].CreateResponse[0].Results[0].Object[0].Name[0]</Name>
                                                                                       <!--Name of Activity-->
                                                                                       <!--<Definition>
                                                                                          <PartnerKey xsi:nil="true"/>
