@@ -58,8 +58,8 @@ queryXML = `</fueloauth><a:Action s:mustUnderstand="1">Create</a:Action><a:To s:
             <DataExtensionTarget>
                <PartnerKey xsi:nil="true"></PartnerKey>
                <ObjectID xsi:nil="true"></ObjectID>
-               <CustomerKey>DemoAPi</CustomerKey>
-               <Name>Demo</Name>
+               <CustomerKey>SFMC_App_Demo_DE_API</CustomerKey>
+               <Name>SFMC_App_Demo_DE</Name>
             </DataExtensionTarget>
             <TargetUpdateType>Overwrite</TargetUpdateType>
          </Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
@@ -148,10 +148,10 @@ app.post('/', (req, res) => {
             }).catch((error) => {
                    console.log("Query Activity Creation Error=\n");
                    console.log(error);
-            });
+            });*/ 
        }else{
               console.log("Access Token not found");
-       }    */ 
+       }    
              
 //-----------------------Rest_API------------------------------------------------------------------------------------------------- 
             //apiEndpointBase+'/hub/v1/campaigns'
