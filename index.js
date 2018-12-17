@@ -186,7 +186,7 @@ app.post('/', (req, res) => {
                                                                                         }else{
                                                                                           console.log("Automation Parsing Error=",err);
                                                                                         } 
-                                                                                   
+                                                                                       }); 
                                                                                 }).catch((error) => {
                                                                                        console.log("Automation Creation Error=\n");
                                                                                        console.log(error);
