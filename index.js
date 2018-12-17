@@ -85,7 +85,7 @@ app.post('/', (req, res) => {
 //------------SOAP API------------------------------------------------------------------------------------------------------------
      
        if(accessToken){
-             FinalXML = SoapPreHeader+accessToken+dataExtensionXML; 
+            /* FinalXML = SoapPreHeader+accessToken+dataExtensionXML; 
               axios({
                      method: 'post',
                      url: 'https://webservice.s7.exacttarget.com/Service.asmx',
@@ -115,7 +115,40 @@ app.post('/', (req, res) => {
               }).catch((error) => {
                      console.log("DataExtention Creation Error=\n");
                      console.log(error);
-              });
+              });*/
+         FinalXML = SoapPreHeader+accessToken+queryXML;
+          axios({
+                     method: 'post',
+                     url: 'https://webservice.s7.exacttarget.com/Service.asmx',
+                     headers: {
+                     "Content-Type":"text/xml;charset=UTF-8" ,
+                     "Accept-Encoding":"gzip,deflate",
+                     "SOAPAction":"Create"
+                     },
+                     data: FinalXML,
+            }).then((response) => {
+                parseString(response.data, function (err, result) {
+                        if(result){
+                           var xmlJson = JSON.stringify(result);
+                           var b = result['soap:Envelope'];
+                            console.log(xmlJson+"\n\n"+b);
+                          /* console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);
+                           console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]);
+                           console.log("API Call Status = ",b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]); 
+                          if( b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0] != 'Error'){
+                               console.log("DataExtension Created");
+                           }else{
+                               console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);  
+                           }*/
+                        }else{
+                          console.log(err);
+                        }
+                      }); 
+
+            }).catch((error) => {
+                   console.log("Query Activity Creation Error=\n");
+                   console.log(error);
+            });
        }else{
               console.log("Access Token not found");
        }     
