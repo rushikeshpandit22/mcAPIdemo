@@ -85,6 +85,7 @@ app.post('/', (req, res) => {
 //------------SOAP API------------------------------------------------------------------------------------------------------------
      
        if(accessToken){
+         //-------------------------Create DataExtension---------------------------
              FinalXML = SoapPreHeader+accessToken+dataExtensionXML; 
               axios({
                      method: 'post',
@@ -102,6 +103,7 @@ app.post('/', (req, res) => {
                            console.log("API Call Status = ",b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]); 
                            if( b['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0] != 'Error'){
                               console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);
+                               //-------------------------Create Query Activity------------------------------------ 
                                           FinalXML = SoapPreHeader+accessToken+queryXML;
                                           axios({
                                                    method: 'post',
@@ -125,6 +127,71 @@ app.post('/', (req, res) => {
                                                         
                                                           if( Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0] != 'Error'){
                                                                console.log(Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);
+                                                              //------------------------Create Automation ----------------------------------------------------------
+                                                               let automationXML = `</fueloauth></soapenv:Header><soapenv:Body><CreateRequest xmlns="http://exacttarget.com/wsdl/partnerAPI"><Options/><Objects xsi:type="Automation">
+                                                                          <Client><ID>7291811</ID><!--ORG ID--></Client>
+                                                                          <Name>AUT_ONEOFF2</Name>
+                                                                          <CustomerKey>AUT_ONEOFF2</CustomerKey>
+                                                                          <Description>AUT_ONEOFF2</Description>
+                                                                          <!--<CategoryID>74052</CategoryID>-->
+                                                                          <AutomationTasks>
+                                                                             <AutomationTask>
+                                                                                <PartnerKey xsi:nil="true"/>
+                                                                                <ObjectID xsi:nil="true"/>
+                                                                                <Name>Task 1</Name>
+                                                                                <Activities>
+                                                                                   <Activity>
+                                                                                      <PartnerKey xsi:nil="true"/>
+                                                                                      <ObjectID>`+Envelope['soap:Body'][0].CreateResponse[0].Results[0].Object[0].ObjectID[0]+`</ObjectID>
+                                                                                      <!--ObjectID of Query-->
+                                                                                      <Name>API QUERY ACTIVITY2</Name>
+                                                                                      <!--Name of Activity-->
+                                                                                      <!--<Definition>
+                                                                                         <PartnerKey xsi:nil="true"/>
+                                                                                         <ObjectID xsi:nil="true"/>
+                                                                                      </Definition>-->
+                                                                                      <ActivityObject xsi:type="QueryDefinition">
+                                                                                         <PartnerKey xsi:nil="true"/>
+                                                                                         <ObjectID>`+Envelope['soap:Body'][0].CreateResponse[0].Results[0].Object[0].ObjectID[0]+`</ObjectID>
+                                                                                         <!--ObjectID of Query-->
+                                                                                         <CustomerKey>`+Envelope['soap:Body'][0].CreateResponse[0].Results[0].Object[0].CustomerKey[0]+`</CustomerKey>
+                                                                                         <!--CustomerKey of Query-->
+                                                                                         <Name>`+Envelope['soap:Body'][0].CreateResponse[0].Results[0].Object[0].Name[0]+`</Name>
+                                                                                         <!--Name of Query-->
+                                                                                      </ActivityObject>
+                                                                                   </Activity>
+                                                                                </Activities>
+                                                                             </AutomationTask>
+                                                                          </AutomationTasks>
+                                                                          <AutomationType>scheduled</AutomationType>
+                                                                       </Objects>
+                                                                    </CreateRequest>
+                                                                 </soapenv:Body>
+                                                              </soapenv:Envelope>`;
+                                                                  FinalXML = SoapPreHeader+accessToken+automationXML;
+                                                                                 axios({
+                                                                                         method: 'post',
+                                                                                         url: 'https://webservice.s7.exacttarget.com/Service.asmx',
+                                                                                         headers: {
+                                                                                         "Content-Type":"text/xml;charset=UTF-8" ,
+                                                                                         "Accept-Encoding":"gzip,deflate",
+                                                                                         "SOAPAction":"Create"
+                                                                                         },
+                                                                                         data: FinalXML,
+                                                                                }).then((response) => {
+                                                                                        parseString(response.data, function (err, result) {
+                                                                                        if(result){
+                                                                                          let Envelope = result['soap:Envelope'];
+                                                                                          console.log("\n Automation API Call Status = ",Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]);
+                                                                                          console.log("API Message=",Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);
+                                                                                        }else{
+                                                                                          console.log("Automation Parsing Error=",err);
+                                                                                        } 
+                                                                                   
+                                                                                }).catch((error) => {
+                                                                                       console.log("Automation Creation Error=\n");
+                                                                                       console.log(error);
+                                                                                });                                                                                   
                                                            }else{
                                                                console.log(Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);  
                                                            }
