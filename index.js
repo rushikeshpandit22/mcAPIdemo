@@ -117,7 +117,12 @@ app.post('/', (req, res) => {
                                                       if(result){
                                                            console.log(JSON.stringify(result));
                                                            let Envelope = result['soap:Envelope'];
-                                                           console.log("API Call Status = ",Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]); 
+                                                           console.log("API Call Status = ",Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]);
+                                                        
+                                                          console.log("ObjectID==",Envelope['soap:Body'][0].CreateResponse[0].Results[0].Object[0].ObjectID[0]); 
+                                                          console.log("CustomerKey==",Envelope['soap:Body'][0].CreateResponse[0].Results[0].Object[0].CustomerKey[0]);
+                                                          console.log("Name==",Envelope['soap:Body'][0].CreateResponse[0].Results[0].Object[0].Name[0]);
+                                                        
                                                           if( Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0] != 'Error'){
                                                                console.log(Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);
                                                            }else{
