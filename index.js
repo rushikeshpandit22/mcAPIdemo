@@ -115,7 +115,7 @@ app.post('/', (req, res) => {
                                           }).then((response) => {
                                               parseString(response.data, function (err, result) {
                                                       if(result){
-                                                           console.log(JSON..stringify(result));
+                                                           console.log(JSON.stringify(result));
                                                            let Envelope = result['soap:Envelope'];
                                                            console.log(xmlJson+"\n\n"+b);
                                                            console.log("API Call Status = ",Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusCode[0]); 
