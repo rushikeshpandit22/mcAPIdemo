@@ -129,7 +129,7 @@ app.post('/', (req, res) => {
                                                                console.log(Envelope['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);  
                                                            }
                                                       }else{
-                                                         console.log("Parsing Error"+err);
+                                                         console.log("Query Activity Parsing Error"+err);
                                                       }
                                                     }); 
 
@@ -142,7 +142,7 @@ app.post('/', (req, res) => {
                                console.log(b['soap:Body'][0].CreateResponse[0].Results[0].StatusMessage[0]);  
                            }
                         }else{
-                          console.log("Parssing Error"+err);
+                          console.log("DataExtention Parssing Error"+err);
                         }
                       }); 
               }).catch((error) => {
