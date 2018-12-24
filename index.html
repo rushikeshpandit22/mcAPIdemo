@@ -31,11 +31,13 @@ $(document).ready(function()
             if($('#user')[0].value == "panda" && $('#pass')[0].value == "1234") {
                 $("#login").hide();
                 $("#tools").show();
+                _etmc.push(["setUserInfo", {"email":$('#user')[0].value+"@gmail.com"}]);
             } 
         });   
 
         $('#toollist li').click(function(e){ 
-                console.log(this.textContent);
-            });
+              console.log(this.textContent);
+              _etmc.push(["trackPageView", { "item" :'"'+this.textContent+'"' }]);	
+           });
         });
 </script>
