@@ -2,14 +2,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <div id="login">
-    <form method="POST" action="/login">
+    <!--form method="POST" action="/login">
         <input type= "text" name="username" placeholder="username"/>
         <input type="password" name="pwd" placeholder="Password"/>
         <input type="submit" value="submit" name="submit"/>
-    </form>
-
+    </form-->
+       <input id="user" type= "text" name="username" placeholder="username"/>
+        <input id="pass" type="password" name="pwd" placeholder="Password"/>
+        <input type="submit" onclick="login()" value="submit" name="submit"/> 
 </div>
-<div>
+<div id = "tools">
 <ul id="toollist">
    <li>Tool_1</li>
    <li>Tool_2</li>
@@ -19,9 +21,17 @@
 <script>
     $(document).ready(function() 
     {
-       /*$('#toollist li').click(function(e) 
+        $("#tools").hide();
+      function login(){
+        console.log('user loged');
+        if($('#user').value == "panda" && $('#pass').value == "1234") {
+            $("#login").hide();
+            $("#tools").show();
+        } 
+      }  
+       $('#toollist li').click(function(e) 
        { 
-          console.log($(this).textContent);
-       });*/
+          console.log(this.textContent);
+       });
     });
 </script>
