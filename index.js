@@ -64,8 +64,8 @@ queryXML = `</fueloauth></soapenv:Header>
             <TargetUpdateType>Overwrite</TargetUpdateType>
          </Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
 
-app.post('/', (req, res) => {
-       var jwtToken = req.body.jwt;
+app.get('/', (req, res) => {
+    /*   var jwtToken = req.body.jwt;
        var secret = 
        'aPwkRdSokdV9CsilYuZN3StLLeaKPUbFZRmptaoDcpFiEa2pUMSPNfbniKG3p06IlFak9TKz9CW0tTnlt1xuSybQkV3kCjGWN8cCsxyAGfHcb_050k-XplzYQyAJLwuYHBzBuU8w0FUbMRij64HjYljIwniEwlry348T3PDBIbPpq5qLGbWgdnOaTiG5SBW4qigC5ALKgSIArrPYvZgPBZS1TKGpm5cs4K-OQ3v7j_q1-qDawDQzSKN9Fdtj5g2';
        var decode = jwt.decode(jwtToken,secret);
@@ -220,56 +220,29 @@ app.post('/', (req, res) => {
        }else{
               console.log("Access Token not found");
        }    
-             
-//-----------------------Rest_API------------------------------------------------------------------------------------------------- 
-            //apiEndpointBase+'/hub/v1/campaigns'
-            //'https://mcs53v5db9s0nn0nrb3kgsl9qly1.rest.marketingcloudapis.com/hub/v1/campaigns'
-             //axios.get(apiEndpointBase+'/hub/v1/campaigns',{
-          /*   axios.get(apiEndpointBase+'data/v1/customobjectdata/key/AMPScript/rowset/',{
-                headers: {
-                "content-type": 'application/json',
-                "authorization": "Bearer "+ accessToken
-                }}).then(response => {
-                    console.log("================================");
-                    console.log(JSON.stringify(response.data.items));
-                    const query = { 
-                            text: 'insert into sfmctest.demo ("Name", "Email") select keys, values from jsonb_to_recordset(\'' + JSON.stringify(response.data.items) + '\') r(keys character varying , values character varying)'
-                    }
-                     client.query(query,(err, res) => {
-                            if (err) {
-                                   console.log(err.stack)
-                            } else {
-                                   console.log("Data inserted");  
-                                   console.log(res.rowCount);
-                            }
-                     });
-                    
-                }).catch( error => {
-                    console.log("Get Campaigns ERROR");
-                    console.log(error);
-                });*/
+
             
         }).catch( error => {
         console.log("Get AccessToken ERROR");
         console.log(error);
-        });
+        });*/
     
  
         res.sendFile(__dirname + '/index.html');
     
 });
-/*const props = ['Name'];
+const props = ['Name'];
 app.post('/getTableData', (req, res) => {
 console.log(req.body);
     if (req.body.username == 'sfmc' && req.body.pwd == '1234') {
-        client.dataExtensionRow({ props, Name: 'PandaAPIDE3' }).get((err, response) => {
+      //  client.dataExtensionRow({ props, Name: 'PandaAPIDE3' }).get((err, response) => {
         res.render('DisplayTableData', {data : response.body.Results});
-        })
+      //  })
     }
     else {
         return res.redirect('/');
     }
 
-});*/
+});
 
 app.listen(port, () => console.log('Gator app listening on port '+port+''));
