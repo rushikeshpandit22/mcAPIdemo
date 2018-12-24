@@ -38,7 +38,7 @@ $(document).ready(function()
 
         $('#toollist li').click(function(e){ 
               console.log(this.textContent);
-              _etmc.push(["trackPageView", { "item" :'"'+this.textContent+'"' }]);	
+              _etmc.push(["trackPageView", { "item" :this.textContent }]);	
            });
  });			
 </script>
