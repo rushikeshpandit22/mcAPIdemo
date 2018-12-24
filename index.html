@@ -21,7 +21,24 @@
 </ul>
 </div>      
 <script type="text/javascript">
-_etmc.push(["setOrgId", "7291811"]);
-_etmc.push(["trackPageView"]);
+$(document).ready(function() 
+{
+    _etmc.push(["setOrgId", "7291811"]);
+    _etmc.push(["trackPageView"]);
+        $("#tools").hide();
+        $('#loginb').click(function(e) { 
+            console.log('user loged');
+            if($('#user')[0].value == "panda" && $('#pass')[0].value == "1234") {
+                $("#login").hide();
+                $("#tools").show();
+                _etmc.push(["setUserInfo", {"email":$('#user')[0].value+"@gmail.com"}]);
+            } 
+        });   
+
+        $('#toollist li').click(function(e){ 
+              console.log(this.textContent);
+              _etmc.push(["trackPageView", { "item" :'"'+this.textContent+'"' }]);	
+           });
+ });			
 </script>
  
