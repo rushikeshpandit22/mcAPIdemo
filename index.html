@@ -9,7 +9,7 @@
     </form-->
        <input id="user" type= "text" name="username" placeholder="username"/>
         <input id="pass" type="password" name="pwd" placeholder="Password"/>
-        <input type="submit" onclick="login()" value="submit" name="submit"/> 
+        <input type="submit" id="loginb" value="submit" name="submit"/> 
 </div>
 <div id = "tools">
 <ul id="toollist">
@@ -19,19 +19,19 @@
 </ul>
 </div>
 <script>
-    $(document).ready(function() 
-    {
+$(document).ready(function() 
+{
         $("#tools").hide();
-      function login(){
-        console.log('user loged');
-        if($('#user').value == "panda" && $('#pass').value == "1234") {
-            $("#login").hide();
-            $("#tools").show();
-        } 
-      }  
-       $('#toollist li').click(function(e) 
-       { 
-          console.log(this.textContent);
-       });
-    });
+        $('#loginb').click(function(e) { 
+            console.log('user loged');
+            if($('#user')[0].value == "panda" && $('#pass')[0].value == "1234") {
+                $("#login").hide();
+                $("#tools").show();
+            } 
+        });   
+
+        $('#toollist li').click(function(e){ 
+                console.log(this.textContent);
+            });
+        });
 </script>
