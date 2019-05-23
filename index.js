@@ -14,11 +14,11 @@ var axios = require('axios');
 var pg = require('pg');
 var parseString = require('xml2js').parseString;
 
-var conString = "postgres://fpqxmoywayesyg:ae337dd3d3a2dd3f8c529e90091b04821f27530d21b2968bf580fee74dfcdc25@ec2-54-83-8-246.compute-1.amazonaws.com:5432/d8rb6oab555lft";
+/*var conString = "postgres://fpqxmoywayesyg:ae337dd3d3a2dd3f8c529e90091b04821f27530d21b2968bf580fee74dfcdc25@ec2-54-83-8-246.compute-1.amazonaws.com:5432/d8rb6oab555lft";
 pg.defaults.ssl = true;
 pg.defaults.poolSize = 20;
 var client = new pg.Client(conString);
-client.connect();
+client.connect();*/
 var accessToken = "",dataExtensionXML, queryXML, automationXML, SoapPreHeader, FinalXML = "";
 
 SoapPreHeader = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
@@ -64,7 +64,7 @@ queryXML = `</fueloauth></soapenv:Header>
             <TargetUpdateType>Overwrite</TargetUpdateType>
          </Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
 
-app.post('/', (req, res) => {
+app.get('/', (req, res) => {
       var jwtToken = req.body.jwt;
   console.log('req \n\n'+JSON.stringify(req));
   console.log('res \n\n'+JSON.stringify(res));
