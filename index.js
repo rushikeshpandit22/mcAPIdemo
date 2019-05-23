@@ -64,7 +64,7 @@ queryXML = `</fueloauth></soapenv:Header>
             <TargetUpdateType>Overwrite</TargetUpdateType>
          </Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
 
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
       var jwtToken = req.body.jwt;
   console.log('req \n\n'+req);
   console.log('res \n\n'+res);
