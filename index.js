@@ -66,10 +66,9 @@ queryXML = `</fueloauth></soapenv:Header>
 
 app.post('/', (req, res) => {
       var jwtToken = req.body.jwt;
-  console.log('req \n\n'+req.toString());
-  console.log('res \n\n'+res.toString());
-  console.log('req.body.jwt \n\n'+req.body.jwt);
-       var secret = 
+  console.log('req \n\n'+JSON.stringify(req));
+  console.log('res \n\n'+JSON.stringify(res));
+        var secret = 
        '_isl5hpwCTyLmZvqKoMeiaWqvkn5SeUVUnlEkXz7KbrW1Fzd3C19_vrC-koGDSCFXU74qX06raiDB3fFILsw5hkXDDKyEr8bB7oPEVbG9j7bfCPEb4CL6-Pufqm8jbz3Lxol2CwrBZzhUroLUUD8G2OJr3MQkRTHCKKZoSkn-qKOzo2K9zY6R-a_RPVjcFgklwjplVhTFpK3tbX7t6lmWvADoTncCG7sa0P8YvpzC_29gYrHvggNdaEqdPHuxQ2';
    /*    var decode = jwt.decode(jwtToken,secret);
        var refreshToken = decode.request.rest.refreshToken;
