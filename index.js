@@ -64,14 +64,18 @@ queryXML = `</fueloauth></soapenv:Header>
             <TargetUpdateType>Overwrite</TargetUpdateType>
          </Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
 
-app.post('/', (req, res) => {
-    /*   var jwtToken = req.body.jwt;
+app.get('/', (req, res) => {
+      var jwtToken = req.body.jwt;
        var secret = 
        'aPwkRdSokdV9CsilYuZN3StLLeaKPUbFZRmptaoDcpFiEa2pUMSPNfbniKG3p06IlFak9TKz9CW0tTnlt1xuSybQkV3kCjGWN8cCsxyAGfHcb_050k-XplzYQyAJLwuYHBzBuU8w0FUbMRij64HjYljIwniEwlry348T3PDBIbPpq5qLGbWgdnOaTiG5SBW4qigC5ALKgSIArrPYvZgPBZS1TKGpm5cs4K-OQ3v7j_q1-qDawDQzSKN9Fdtj5g2';
        var decode = jwt.decode(jwtToken,secret);
        var refreshToken = decode.request.rest.refreshToken;
        var authEndpoint = decode.request.rest.authEndpoint;
        var apiEndpointBase = decode.request.rest.apiEndpointBase; 
+       console.log('jwt token \n'+jwtToken);
+       console.log('refreshToken \n\n'+refreshToken);   
+       console.log('authEndpoint \n\n'+authEndpoint);
+       console.log('apiEndpointBase \n\n'+apiEndpointBase);
   
        axios.post(authEndpoint,{
             "clientSecret":"emdG17BLX14drPPNQ6QGmxMt",
@@ -81,10 +85,11 @@ app.post('/', (req, res) => {
         }).then(response =>{
             accessToken = response.data.accessToken;
             refreshToken = response.data.refreshToken;
-            console.log(accessToken);
+            console.log('accessToken \n'+accessToken);
+            
 //------------SOAP API------------------------------------------------------------------------------------------------------------
      
-       if(accessToken){
+   /*     if(accessToken){
          //-------------------------Create DataExtension---------------------------
              FinalXML = SoapPreHeader+accessToken+dataExtensionXML; 
               axios({
