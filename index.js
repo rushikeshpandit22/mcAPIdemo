@@ -78,8 +78,8 @@ app.get('/', (req, res) => {
        console.log('apiEndpointBase \n\n'+apiEndpointBase);
   
        axios.post(authEndpoint,{
-            "clientSecret":"emdG17BLX14drPPNQ6QGmxMt",
-            "clientId":"e91wco2s002d3dfz70r3m9f0",
+            "clientSecret":"eeR20WggF5YBLaucVwQX0Ptb",
+            "clientId":"pkann2kcekfi54jgps65mkxa",
             "refreshToken":refreshToken,
             "accessType": "offline"        
         }).then(response =>{
