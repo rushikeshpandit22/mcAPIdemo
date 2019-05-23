@@ -77,7 +77,7 @@ app.get('/', (req, res) => {
        console.log('authEndpoint \n\n'+authEndpoint);
        console.log('apiEndpointBase \n\n'+apiEndpointBase);
   
-       axios.post(authEndpoint,{
+     /*  axios.post(authEndpoint,{
             "clientSecret":"eeR20WggF5YBLaucVwQX0Ptb",
             "clientId":"pkann2kcekfi54jgps65mkxa",
             "refreshToken":refreshToken,
@@ -89,7 +89,7 @@ app.get('/', (req, res) => {
             
 //------------SOAP API------------------------------------------------------------------------------------------------------------
      
-   /*     if(accessToken){
+        if(accessToken){
          //-------------------------Create DataExtension---------------------------
              FinalXML = SoapPreHeader+accessToken+dataExtensionXML; 
               axios({
