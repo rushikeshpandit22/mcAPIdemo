@@ -66,8 +66,10 @@ queryXML = `</fueloauth></soapenv:Header>
 
 app.get('/', (req, res) => {
       var jwtToken = req.body.jwt;
-  console.log('req \n\n'+JSON.stringify(req));
-  console.log('res \n\n'+JSON.stringify(res));
+  console.log('reqjwt \n\n'+jwtToken);
+  console.log('resjwt \n\n'+res.body.jwt);
+   console.log('res \n\n'+res.body);
+   console.log('req \n\n'+req.body);
         var secret = 
        '_isl5hpwCTyLmZvqKoMeiaWqvkn5SeUVUnlEkXz7KbrW1Fzd3C19_vrC-koGDSCFXU74qX06raiDB3fFILsw5hkXDDKyEr8bB7oPEVbG9j7bfCPEb4CL6-Pufqm8jbz3Lxol2CwrBZzhUroLUUD8G2OJr3MQkRTHCKKZoSkn-qKOzo2K9zY6R-a_RPVjcFgklwjplVhTFpK3tbX7t6lmWvADoTncCG7sa0P8YvpzC_29gYrHvggNdaEqdPHuxQ2';
    /*    var decode = jwt.decode(jwtToken,secret);
