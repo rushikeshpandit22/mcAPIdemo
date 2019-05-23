@@ -65,9 +65,9 @@ queryXML = `</fueloauth></soapenv:Header>
          </Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
 
 app.get('/', (req, res) => {
-      var jwtToken = req.body.jwt;
-  console.log('reqjwt \n\n'+jwtToken);
-  console.log('resjwt \n\n'+res.body.jwt);
+     // var jwtToken = req.body.jwt;
+ // console.log('reqjwt \n\n'+jwtToken);
+ // console.log('resjwt \n\n'+res.body.jwt);
    console.log('res \n\n'+res.body);
    console.log('req \n\n'+req.body);
         var secret = 
