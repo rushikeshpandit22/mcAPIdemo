@@ -253,6 +253,8 @@ console.log(req.body);
 
 });
 app.get('/logout',(req, res)=>{
-    document.write("Hello World!");
+   var html = '<p>Hello World!</p>';
+
+    res.end(html, 'utf-8');
 });
 app.listen(port, () => console.log('Gator app listening on port '+port+''));
