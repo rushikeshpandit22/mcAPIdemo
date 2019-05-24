@@ -67,6 +67,7 @@ queryXML = `</fueloauth></soapenv:Header>
 
 app.post('/',(req, res)=>{ 
 console.log(util.inspect(req));
+console.log('*****************************************************************************');
 console.log(util.inspect(res)); 
 });
 
