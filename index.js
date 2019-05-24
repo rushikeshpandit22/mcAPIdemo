@@ -63,13 +63,18 @@ queryXML = `</fueloauth></soapenv:Header>
             </DataExtensionTarget>
             <TargetUpdateType>Overwrite</TargetUpdateType>
          </Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
-app.get('/',(req, res)=>{
-  parseString(req, function (err, result) {
-    console.log('req \n\n'+result);
-   });
-   res.sendFile(__dirname + '/index.html');
+
+app.get('/',(req, res)=>{ 
+ console.log(JSON.stringify(req, null, 4)); 
+ console.log(JSON.stringify(res, null, 4));  
 });
-app.post('/login', (req, res) => {
+
+/*app.post('/',(req, res)=>{
+ console.log(JSON.stringify(req, null, 4)); 
+ console.log(JSON.stringify(res, null, 4));
+});**/
+
+/*app.post('/login', (req, res) => {
      // var jwtToken = req.body.jwt;
  // console.log('reqjwt \n\n'+jwtToken);
  // console.log('resjwt \n\n'+res.body.jwt);
@@ -79,7 +84,7 @@ app.post('/login', (req, res) => {
    console.log('req \n\n'+req.body.jwt);
         var secret = 
        '_isl5hpwCTyLmZvqKoMeiaWqvkn5SeUVUnlEkXz7KbrW1Fzd3C19_vrC-koGDSCFXU74qX06raiDB3fFILsw5hkXDDKyEr8bB7oPEVbG9j7bfCPEb4CL6-Pufqm8jbz3Lxol2CwrBZzhUroLUUD8G2OJr3MQkRTHCKKZoSkn-qKOzo2K9zY6R-a_RPVjcFgklwjplVhTFpK3tbX7t6lmWvADoTncCG7sa0P8YvpzC_29gYrHvggNdaEqdPHuxQ2';
-   /*    var decode = jwt.decode(jwtToken,secret);
+       var decode = jwt.decode(jwtToken,secret);
        var refreshToken = decode.request.rest.refreshToken;
        var authEndpoint = decode.request.rest.authEndpoint;
        var apiEndpointBase = decode.request.rest.apiEndpointBase; 
@@ -241,12 +246,12 @@ app.post('/login', (req, res) => {
         }).catch( error => {
         console.log("Get AccessToken ERROR");
         console.log(error);
-        });*/
+        });
     
  
         res.sendFile(__dirname + '/index.html');
     
-});
+});*/
 const props = ['Name'];
 app.post('/getTableData', (req, res) => {
 console.log(req.body);
@@ -261,7 +266,7 @@ console.log(req.body);
 
 });
 app.get('/logout',(req, res)=>{
-   var html = '<p>Hello World!</p>';
+   var html = '<p>Logout.....!</p>';
 
     res.end(html, 'utf-8');
 });
