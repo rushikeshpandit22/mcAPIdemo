@@ -12,6 +12,7 @@ var port = process.env.PORT || 3000;
 var jwt = require('jwt-simple');
 var axios = require('axios');
 var pg = require('pg');
+var util = require('util');
 var parseString = require('xml2js').parseString;
 
 /*var conString = "postgres://fpqxmoywayesyg:ae337dd3d3a2dd3f8c529e90091b04821f27530d21b2968bf580fee74dfcdc25@ec2-54-83-8-246.compute-1.amazonaws.com:5432/d8rb6oab555lft";
@@ -65,8 +66,8 @@ queryXML = `</fueloauth></soapenv:Header>
          </Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
 
 app.get('/',(req, res)=>{ 
- console.log(JSON.stringify(req, null, 4)); 
- console.log(JSON.stringify(res, null, 4));  
+console.log(util.inspect(req));
+console.log(util.inspect(res)); 
 });
 
 /*app.post('/',(req, res)=>{
