@@ -63,7 +63,10 @@ queryXML = `</fueloauth></soapenv:Header>
             </DataExtensionTarget>
             <TargetUpdateType>Overwrite</TargetUpdateType>
          </Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
-app.get('/logout',(req, res)=>{
+app.get('/',(req, res)=>{
+  parseString(req, function (err, result) {
+    console.log('req \n\n'+result);
+   });
    res.sendFile(__dirname + '/index.html');
 });
 app.post('/login', (req, res) => {
@@ -71,7 +74,7 @@ app.post('/login', (req, res) => {
  // console.log('reqjwt \n\n'+jwtToken);
  // console.log('resjwt \n\n'+res.body.jwt);
    parseString(req, function (err, result) {
-    onsole.log('req \n\n'+result);
+    console.log('req \n\n'+result);
    });
    console.log('req \n\n'+req.body.jwt);
         var secret = 
