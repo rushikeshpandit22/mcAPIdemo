@@ -65,7 +65,7 @@ queryXML = `</fueloauth></soapenv:Header>
             <TargetUpdateType>Overwrite</TargetUpdateType>
          </Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
 
-app.get('/',(req, res)=>{ 
+app.post('/',(req, res)=>{ 
 console.log(util.inspect(req));
 console.log(util.inspect(res)); 
 });
