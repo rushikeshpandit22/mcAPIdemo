@@ -66,6 +66,12 @@ queryXML = `</fueloauth></soapenv:Header>
          </Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
 
 app.get('/', function(request, response) {
+   var jwtToken = req.body.jwt;
+       var secret = 
+       'q4nNEJGT9Tto2978qbGRXXRR4oSTEoYFFYt4eBqT7eOxDyKdRlRKyK2sf8r38HTaQJnIEo7VM-rZmBZttqtUNdxiEIVIZTCCfKgPsWFoCJT9ybYHUW1h918LNBeJjSwjHUNEh6mjCGrZrsef1Su5bu7z9KXQAn6YCdbYAi-9kErwlLbLMZRCyhgTenb3UmkU5PTnOWTbifU9iet8eJVGElaozJRk19maxEWz7qqFQRw9S4SS5v7WQ4qbaDhdXQ2';
+       var decode = jwt.decode(jwtToken,secret);
+  
+console.log("jwt"+util.inspect(req.body));
  response.send('Hello World!');
  });
 
