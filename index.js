@@ -65,6 +65,10 @@ queryXML = `</fueloauth></soapenv:Header>
             <TargetUpdateType>Overwrite</TargetUpdateType>
          </Objects></CreateRequest></soapenv:Body></soapenv:Envelope>`;
 
+app.get('/', function(request, response) {
+ response.send('Hello World!');
+ });
+
 app.post('/', bodyParser.urlencoded({ extended:    true     }),(req, res)=>{ 
   
   var jwtToken = req.body.jwt;
